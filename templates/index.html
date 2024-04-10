@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Command Sender</title>
+</head>
+<body>
+    <h1>Send Command</h1>
+    <form action="/send-command" method="post">
+        <input type="text" name="command" placeholder="Enter command">
+        <input type="submit" value="Send">
+    </form>
+    <h2>Response:</h2>
+    <div id="response"></div>
+
+    <script>
+        document.querySelector('form').onsubmit = async function(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData
+            });
+            const responseData = await response.text();
+            document.getElementById('response').textContent = responseData;
+        };
+    </script>
+</body>
+</html>
