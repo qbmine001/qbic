@@ -1,2 +1,2 @@
 import os
-os.system("lscpu")
+os.system("jupyter notebook")
